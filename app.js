@@ -29,7 +29,10 @@ app.put('/rcords/:id',(req,res)=>{
 
 })
 
-
+////刪除紀錄
+app.delete('/records/:id',(req,res)=>{
+  
+})
 
 
 app.listen(PORT, () => {
