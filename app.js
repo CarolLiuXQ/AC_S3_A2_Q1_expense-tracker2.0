@@ -21,6 +21,17 @@ app.get('/records/new', (req, res) => {
   res.render('new')
 })
 
+///修改紀錄
+app.get('/records/:id/edit',(req,res)=>{
+  res.render('edit')
+})
+app.put('/rcords/:id',(req,res)=>{
+
+})
+
+
+
+
 app.listen(PORT, () => {
   console.log(`http://localhost:${PORT}`)
 })
