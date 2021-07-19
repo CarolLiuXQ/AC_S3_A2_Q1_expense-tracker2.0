@@ -17,6 +17,10 @@ app.get('/', (req, res) => {
   res.render('index')
 })
 
+app.get('/records/new', (req, res) => {
+  res.render('new')
+})
+
 app.listen(PORT, () => {
   console.log(`http://localhost:${PORT}`)
 })
