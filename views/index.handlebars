@@ -1,1 +1,42 @@
-<h1>Hello world</h1>
+<div class="container justify-content-center">
+  {{!-- 類別 --}}
+  <div class="row">
+    <div class="dropdown">
+      <button class="btn btn-outline-dark dropdown-toggle col-6" type="button" id="dropdownMenuButton1"
+        data-bs-toggle="dropdown" aria-expanded="false">
+        類別
+      </button>
+      <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+        <li><a class="dropdown-item" href="#">家居物業</a></li>
+        <li><a class="dropdown-item" href="#">交通出行</a></li>
+        <li><a class="dropdown-item" href="#">休閒娛樂</a></li>
+        <li><a class="dropdown-item" href="#">餐飲食品</a></li>
+        <li><a class="dropdown-item" href="#">其他</a></li>
+      </ul>
+    </div>
+    {{!-- 總金額 --}}
+    <div class="totalAmount">
+      <h5>總金額：</h5>
+      <h1>25260</h1>
+    </div>
+    {{!-- record --}}
+    <ul class="list-group">
+      <li class="list-group-item">
+        <i class="fas fa-utensils fa-3x"></i>
+        <div>午餐</div>
+        <div>2019/04/23</div>
+        <div>60</div>
+
+        <div class="col-auto">
+          <a class="btn btn-success" href="./records/{{ this._id }}/edit">修改</a>
+          <form action="./records/{{ this._id }}?_method=DELETE" method="POST" style="display: inline;">
+            <button class="btn btn-danger" type="submit">刪除</button>
+          </form>
+        </div>
+
+      </li>
+    </ul>
+    {{!-- 新增按紐 --}}
+    <button type="button" class="btn btn-outline-danger" href="/records/new">新增支出</button>
+  </div>
+</div>
