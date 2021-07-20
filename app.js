@@ -15,7 +15,6 @@ app.use(methodOverride('_method'))
 
 const Record = require('./models/record')
 const Category = require('./models/category')
-let category = ''
 
 app.get('/', (req, res) => {
   Promise.all([Record.find().lean(), Category.find().lean()])
@@ -31,31 +30,26 @@ app.get('/', (req, res) => {
       res.render('index', { records })
     })
     .catch(error => console.error(error))
-
-  // Record.find()
-  //   .lean()
-  //   .then(record => {
-  //     Category.find({ categoryEN: record[0].category })
-  //       .lean()
-  //       .then(category => {
-  //         category = category[0].iconHTML
-  //         // console.log(category)
-  //         // res.render('index', { category: category[0] })
-  //       })
-  //       .catch(error => console.log(error))
-  //     console.log(category)
-  //     res.render('index', { record: record[0], category })
-  //   })
-
 })
 
+///new page 
 app.get('/records/new', (req, res) => {
   res.render('new')
+})
+///新增紀錄
+app.post('/', (req, res) => {
+  const { name, date, category, amount } = req.body
+  return Record.create({ name, date, category, amount })
+    .then(() => res.redirect('/'))
+    .catch(error => console.log(error))
 })
 
 ///修改紀錄
 app.get('/records/:id/edit', (req, res) => {
-  res.render('edit')
+  Record.findById(req.params.id)
+    .lean()
+    .then(record => res.render('edit', { record }))
+    .catch(error => console.log(error))
 })
 app.put('/rcords/:id', (req, res) => {
 
@@ -65,6 +59,7 @@ app.put('/rcords/:id', (req, res) => {
 app.delete('/records/:id', (req, res) => {
 
 })
+
 
 
 app.listen(PORT, () => {
