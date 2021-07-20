@@ -44,6 +44,17 @@ app.post('/', (req, res) => {
     .catch(error => console.log(error))
 })
 
+
+////刪除紀錄
+app.delete('/records/:id', (req, res) => {
+  const id = req.params.id
+  Record.findById(id)
+    .then(record => record.remove())
+    .then(() => res.redirect('/'))
+    .catch(error => console.log(error))
+})
+
+
 ///修改紀錄
 app.get('/records/:id/edit', (req, res) => {
   Record.findById(req.params.id)
@@ -51,14 +62,10 @@ app.get('/records/:id/edit', (req, res) => {
     .then(record => res.render('edit', { record }))
     .catch(error => console.log(error))
 })
-app.put('/rcords/:id', (req, res) => {
+app.put('/records/:id', (req, res) => {
 
 })
 
-////刪除紀錄
-app.delete('/records/:id', (req, res) => {
-
-})
 
 
 
