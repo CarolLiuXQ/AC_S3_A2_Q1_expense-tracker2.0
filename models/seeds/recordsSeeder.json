@@ -1,0 +1,32 @@
+{
+  "1": {
+    "name": "午餐",
+    "category": "food",
+    "date": "2019/04/23",
+    "amount": 60
+  },
+  "2": {
+    "name": "晚餐",
+    "category": "food",
+    "date": "2019/04/23",
+    "amount": 60
+  },
+  "3": {
+    "name": "捷運",
+    "category": "transport",
+    "date": "2019/04/23",
+    "amount": 60
+  },
+  "4": {
+    "name": "電影：驚奇隊長",
+    "category": "entertainment",
+    "date": "2019/04/23",
+    "amount": 220
+  },
+  "5": {
+    "name": "租金",
+    "category": "home",
+    "date": "2019/04/01",
+    "amount": 25000
+  }
+}
