@@ -1,19 +1,21 @@
 <div class="container justify-content-center">
   {{!-- 類別 --}}
   <div class="row">
-    <div class="dropdown">
-      <button class="btn btn-outline-dark dropdown-toggle col-6" type="button" id="dropdownMenuButton1"
-        data-bs-toggle="dropdown" aria-expanded="false">
-        類別
-      </button>
-      <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-        <li><a class="dropdown-item" href="#">家居物業</a></li>
-        <li><a class="dropdown-item" href="#">交通出行</a></li>
-        <li><a class="dropdown-item" href="#">休閒娛樂</a></li>
-        <li><a class="dropdown-item" href="#">餐飲食品</a></li>
-        <li><a class="dropdown-item" href="#">其他</a></li>
-      </ul>
-    </div>
+    <form action="/" method="GET">
+      <div class="row mb-3">
+        <div class="col-sm-10">
+          <select class="form-select" id="category" name="category" onchange="submit()">
+            <option value="all" selected>類別</option>
+            <option value="home" {{#isEqual "home" filteredCategory}}selected{{/isEqual}}>家居物業</option>
+            <option value="transport" {{#isEqual "transport" filteredCategory}}selected{{/isEqual}}>交通出行</option>
+            <option value="entertainment" {{#isEqual "entertainment" filteredCategory}}selected{{/isEqual}}>休閒娛樂
+            </option>
+            <option value="food" {{#isEqual "food" filteredCategory}}selected{{/isEqual}}>餐飲食品</option>
+            <option value="others" {{#isEqual "others" filteredCategory}}selected{{/isEqual}}>其他</option>
+          </select>
+        </div>
+      </div>
+    </form>
     {{!-- 總金額 --}}
     <div class="totalAmount">
       <h5>總金額：</h5>

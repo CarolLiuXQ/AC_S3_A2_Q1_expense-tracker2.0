@@ -9,15 +9,24 @@ router.get('/', (req, res) => {
     .then(results => {
       const records = results[0]
       const category = results[1]
+      let filteredCategory = req.query.category
       let totalAmount = 0
-      records.forEach(record => {
+      //為了判定是不是首頁,如果是的話則顯示全部records
+      filteredCategory === undefined ? filteredCategory='all' : null
+      //為了首頁的類別篩選
+      let filteredRecords = records.filter(record =>
+        record.category === filteredCategory
+      )
+      //如果把篩選選擇類別的話,顯示全部紀錄
+      filteredCategory === 'all' ? filteredRecords = records : filteredRecords = filteredRecords
+      filteredRecords.forEach(record => {
         const categoryFound = category.find(category =>
           category.categoryEN === record.category
         )
         record.category = categoryFound.iconHTML
         totalAmount += Number(record.amount)
       })
-      res.render('index', { records, totalAmount })
+      res.render('index', { records: filteredRecords, totalAmount, filteredCategory })
     })
     .catch(error => console.error(error))
 })
