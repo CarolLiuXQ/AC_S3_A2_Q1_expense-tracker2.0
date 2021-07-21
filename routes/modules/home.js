@@ -9,13 +9,15 @@ router.get('/', (req, res) => {
     .then(results => {
       const records = results[0]
       const category = results[1]
+      let totalAmount = 0
       records.forEach(record => {
         const categoryFound = category.find(category =>
           category.categoryEN === record.category
         )
         record.category = categoryFound.iconHTML
+        totalAmount += Number(record.amount)
       })
-      res.render('index', { records })
+      res.render('index', { records, totalAmount })
     })
     .catch(error => console.error(error))
 })
