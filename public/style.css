@@ -1,0 +1,34 @@
+h1.col-8{
+  color:rgba(224, 110, 34, 0.848);
+  font-size: 5rem;
+}
+
+.icon.fas{
+  color: rgb(127, 210, 246);
+  font-size: 40px;
+}
+
+.amount.col-2{
+  line-height:50px;
+  vertical-align: middle;
+  text-align: end;
+}
+
+#list-group{
+  border: none;
+}
+
+li:nth-child(odd) .record-penal {
+  background:rgb(234, 234, 234); 
+}
+
+#create{
+  background-color: rgba(224, 110, 34, 0.848);
+  color: white;
+  border-color: black;
+}
+
+.col-2.col-form-label.p-0{
+  line-height:40px;
+  vertical-align: middle;
+}

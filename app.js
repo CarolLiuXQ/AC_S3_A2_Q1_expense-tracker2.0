@@ -9,6 +9,7 @@ const PORT = process.env.PORT || 3000
 
 require('./config/mongoose')
 
+app.use(express.static('public'))
 app.engine('handlebars', exphbs({
   default: 'main',
   helpers: require('./controller/handlebarsHelper')

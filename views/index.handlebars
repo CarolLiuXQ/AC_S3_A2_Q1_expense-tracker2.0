@@ -1,47 +1,42 @@
-<div class="container justify-content-center">
+<div class="row">
   {{!-- 類別 --}}
-  <div class="row">
-    <form action="/" method="GET">
-      <div class="row mb-3">
-        <div class="col-sm-10">
-          <select class="form-select" id="category" name="category" onchange="submit()">
-            <option value="all" selected>類別</option>
-            <option value="home" {{#isEqual "home" filteredCategory}}selected{{/isEqual}}>家居物業</option>
-            <option value="transport" {{#isEqual "transport" filteredCategory}}selected{{/isEqual}}>交通出行</option>
-            <option value="entertainment" {{#isEqual "entertainment" filteredCategory}}selected{{/isEqual}}>休閒娛樂
-            </option>
-            <option value="food" {{#isEqual "food" filteredCategory}}selected{{/isEqual}}>餐飲食品</option>
-            <option value="others" {{#isEqual "others" filteredCategory}}selected{{/isEqual}}>其他</option>
-          </select>
+  <form action="/" method="GET" class="col-8 my-4">
+    <select class="form-select" id="category" name="category" onchange="submit()">
+      <option value="all" selected>類別</option>
+      <option value="home" {{#isEqual "home" filteredCategory}}selected{{/isEqual}}>家居物業</option>
+      <option value="transport" {{#isEqual "transport" filteredCategory}}selected{{/isEqual}}>交通出行</option>
+      <option value="entertainment" {{#isEqual "entertainment" filteredCategory}}selected{{/isEqual}}>休閒娛樂
+      </option>
+      <option value="food" {{#isEqual "food" filteredCategory}}selected{{/isEqual}}>餐飲食品</option>
+      <option value="others" {{#isEqual "others" filteredCategory}}selected{{/isEqual}}>其他</option>
+    </select>
+  </form>
+  {{!-- 總金額 --}}
+  <h5 class="mb-0">總金額：</h5>
+  <h1 class="col-8" style="text-align: end;">{{totalAmount}}</h1>
+  {{!-- record --}}
+  <ul class="list-group">
+    {{#each records}}
+    <li class="list-group-item d-flex flex-row p-0" id="list-group">
+      <div class="record-penal py-2 px-5 col-8 d-flex flex-row">
+        <i class="col-2 icon {{this.category}}"></i>
+        <div class="record-detail ms-2 col-8">
+          <div class="name">{{this.name}}</div>
+          <div class="date">{{this.date}}</div>
         </div>
+        <div class="amount col-2">{{this.amount}}</div>
       </div>
-    </form>
-    {{!-- 總金額 --}}
-    <div class="totalAmount">
-      <h5>總金額：</h5>
-      <h1>{{totalAmount}}</h1>
-    </div>
-    {{!-- record --}}
-    <ul class="list-group">
-      {{#each records}}
-      <li class="list-group-item">
-        <div class="icon">
-          <i class="{{this.category}}"></i>
-        </div>
-        <div class="name">{{this.name}}</div>
-        <div class="date">{{this.date}}</div>
-        <div class="amount">{{this.amount}}</div>
-
-        <div class="col-auto">
-          <a class="btn btn-success" href="./records/{{ this._id }}/edit">修改</a>
-          <form action="./records/{{ this._id }}?_method=DELETE" method="POST" style="display: inline;">
-            <button class="btn btn-danger" type="submit">刪除</button>
-          </form>
-        </div>
-      </li>
-      {{/each}}
-    </ul>
+      <div class="button-panel col-4 d-flex justify-content-end align-items-center">
+        <a class="btn" href="./records/{{ this._id }}/edit">修改</a>
+        <form action="./records/{{ this._id }}?_method=DELETE" method="POST" style="display: inline;">
+          <button class="btn" type="submit">刪除</button>
+        </form>
+      </div>
+    </li>
+    {{/each}}
+  </ul>
+  <div class="col-8 d-flex justify-content-center">
     {{!-- 新增按紐 --}}
-    <a class="btn btn-outline-danger" href="/records/new">Create</a>
+    <a class="btn btn-outline-danger col-5 mt-4" href="/records/new" id="create">新增支出</a>
   </div>
 </div>
