@@ -8,7 +8,10 @@ const PORT = process.env.PORT || 3000
 
 require('./config/mongoose')
 
-app.engine('handlebars', exphbs({ default: 'main' }))
+app.engine('handlebars', exphbs({
+  default: 'main',
+  helpers: require('./controller/handlebarsHelper')
+}))
 app.set('view engine', 'handlebars')
 app.use(express.urlencoded({ extended: true }))
 app.use(methodOverride('_method'))
@@ -62,8 +65,20 @@ app.get('/records/:id/edit', (req, res) => {
     .then(record => res.render('edit', { record }))
     .catch(error => console.log(error))
 })
-app.put('/records/:id', (req, res) => {
 
+app.put('/records/:id', (req, res) => {
+  const { name, date, category, amount } = req.body
+  const id = String(req.params.id)
+  return Record.findById(id)
+    .then(record => {
+      record.name = name
+      record.date = date
+      record.category = category
+      record.amount = amount
+      return record.save()
+    })
+    .then(() => res.redirect('/'))
+    .catch(error => console.log(error))
 })
 
 
