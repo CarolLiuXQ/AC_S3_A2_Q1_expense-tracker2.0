@@ -11,14 +11,14 @@ router.get('/', (req, res) => {
       const category = results[1]
       let filteredCategory = req.query.category
       let totalAmount = 0
-      //為了判定是不是首頁,如果是的話則顯示全部records
-      filteredCategory === undefined ? filteredCategory='all' : null
-      //為了首頁的類別篩選
+
+      //篩選類別
       let filteredRecords = records.filter(record =>
         record.category === filteredCategory
       )
-      //如果把篩選選擇類別的話,顯示全部紀錄
-      filteredCategory === 'all' ? filteredRecords = records : filteredRecords = filteredRecords
+      //因為首頁的filteredCategory是undefined所以要做區分
+      filteredCategory === undefined ? filteredRecords = records : filteredRecords = filteredRecords
+
       filteredRecords.forEach(record => {
         const categoryFound = category.find(category =>
           category.categoryEN === record.category

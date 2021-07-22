@@ -2,7 +2,7 @@
   {{!-- 類別 --}}
   <form action="/" method="GET" class="col-8 my-4">
     <select class="form-select" id="category" name="category" onchange="submit()">
-      <option value="all" selected>類別</option>
+      <option value="" disabled selected hidden>類別</option>
       <option value="home" {{#isEqual "home" filteredCategory}}selected{{/isEqual}}>家居物業</option>
       <option value="transport" {{#isEqual "transport" filteredCategory}}selected{{/isEqual}}>交通出行</option>
       <option value="entertainment" {{#isEqual "entertainment" filteredCategory}}selected{{/isEqual}}>休閒娛樂
@@ -29,7 +29,7 @@
       <div class="button-panel col-4 d-flex justify-content-end align-items-center">
         <a class="btn" href="./records/{{ this._id }}/edit">修改</a>
         <form action="./records/{{ this._id }}?_method=DELETE" method="POST" style="display: inline;">
-          <button class="btn" type="submit">刪除</button>
+          <button class="btn" type="submit" onclick="return confirm('你確定要刪除嗎?')">刪除</button>
         </form>
       </div>
     </li>
