@@ -2,6 +2,7 @@
 
 AlphaCamp學期2-3，A12作業專案的Expense Tracker，  
 使用 Node.js , Express , express-handlebars 打造可以記帳並分類的介面。
+使用heroku的連結為 https://cryptic-tundra-93221.herokuapp.com/
 
 ## 功能描述
 
