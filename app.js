@@ -5,7 +5,7 @@ const exphbs = require('express-handlebars')
 const routes = require('./routes/index')
 
 const app = express()
-const PORT = process.env.PORT
+const PORT = process.env.PORT || 3000
 
 require('./config/mongoose')
 

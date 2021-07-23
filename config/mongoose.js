@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 const db = mongoose.connection
-const MONGODB_URI = 'mongodb+srv://root:21RbD0uTJpWvysGZ@cluster0.avghh.mongodb.net/expense-tracker?retryWrites=true&w=majority'
+const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost/expense-tracker'
 mongoose.connect(MONGODB_URI, {
   useNewUrlParser: true
   , useUnifiedTopology: true
