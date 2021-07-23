@@ -10,21 +10,21 @@
     <div class="row mb-3">
       <label for="inputName" class="col-2 col-form-label p-0">名稱*：</label>
       <div class="col-10">
-        <input name="name" class="form-control" id="inputName" value="{{record.name}}">
+        <input name="name" class="form-control" id="inputName" value="{{record.name}}" required>
       </div>
     </div>
     <div class="row mb-3">
       <label for="inputDate" class="col-2 col-form-label p-0">日期*：
       </label>
       <div class="col-10">
-        <input type="date" name="date" class="form-control" id="inputDate" value="{{record.date}}">
+        <input type="date" name="date" class="form-control" id="inputDate" value="{{record.date}}" required>
       </div>
     </div>
     <div class="row mb-3">
       <label for="category" class="col-2 col-form-label p-0">類別*：</label>
       <div class="col-10">
-        <select class="form-select" id="category" name="category">
-          <option selected>Select</option>
+        <select class="form-select" id="category" name="category" required>
+          {{!-- <option selected>Select</option> --}}
           <option value="home" {{#isEqual "home" record.category}}selected{{/isEqual}}>家居物業</option>
           <option value="transport" {{#isEqual "transport" record.category}}selected{{/isEqual}}>交通出行</option>
           <option value="entertainment" {{#isEqual "entertainment" record.category}}selected{{/isEqual}}>休閒娛樂
@@ -38,7 +38,8 @@
       <label for="inputAmount" class="col-2 col-form-label p-0">金額*：
       </label>
       <div class="col-10">
-        <input type="number" name="amount" class="form-control" id="inputAmount" min="0" value="{{record.amount}}">
+        <input type="number" name="amount" class="form-control" id="inputAmount" min="0" value="{{record.amount}}"
+          required>
       </div>
     </div>
     <div class="d-flex flex-row justify-content-end align-items-end">

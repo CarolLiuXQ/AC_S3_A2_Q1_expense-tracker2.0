@@ -10,21 +10,22 @@
     <div class="row mb-3">
       <label for="inputName" class="col-2 col-form-label p-0">名稱*：</label>
       <div class="col-10">
-        <input name="name" class="form-control" id="inputName">
+        <input name="name" class="form-control" id="inputName" required>
       </div>
     </div>
     <div class="row mb-3">
       <label for="inputDate" class="col-2 col-form-label p-0">日期*：
       </label>
       <div class="col-10">
-        <input type="date" name="date" class="form-control" id="inputDate">
+        <input type="date" name="date" class="form-control" id="inputDate" required>
       </div>
     </div>
     <div class="row mb-3">
       <label for="category" class="col-2 col-form-label p-0">類別*：</label>
       <div class="col-10">
-        <select class="form-select" id="category" name="category">
-          <option selected>Select</option>
+        <select class="form-select" id="category" name="category" required>
+          {{!-- 因為留著Select如果有人沒有去選的話會有bug所以我把它註解掉了 --}}
+          {{!-- <option disable selected hidden>Select</option> --}}
           <option value="home">家居物業</option>
           <option value="transport">交通出行</option>
           <option value="entertainment">休閒娛樂</option>
@@ -37,7 +38,7 @@
       <label for="inputAmount" class="col-2 col-form-label p-0">金額*：
       </label>
       <div class="col-10">
-        <input type="number" name="amount" class="form-control" id="inputAmount" min="0">
+        <input type="number" name="amount" class="form-control" id="inputAmount" min="0" required>
       </div>
     </div>
     <div class="d-flex flex-row justify-content-end align-items-end">
