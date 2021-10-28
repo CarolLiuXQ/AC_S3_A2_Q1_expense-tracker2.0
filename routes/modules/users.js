@@ -9,5 +9,13 @@ router.get('/register', (req, res) => {
   res.render('register')
 })
 
+router.post('/login',(req,res)=>{
+  console.log('login post')
+})
+
+router.post('/register', (req, res) => {
+  console.log('register post')
+})
+
 
 module.exports = router
