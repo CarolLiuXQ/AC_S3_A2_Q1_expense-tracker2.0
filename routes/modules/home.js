@@ -5,8 +5,9 @@ const Record = require('../../models/record')
 const Category = require('../../models/category')
 
 router.get('/', (req, res) => {
+  const userId = req.user._id
   //同時在DB中搜尋records和categories這兩張表
-  Promise.all([Record.find().lean(), Category.find().lean()])
+  Promise.all([Record.find({ userId }).lean(), Category.find().lean()])
     .then(results => {
       const records = results[0]
       const category = results[1]
@@ -37,8 +38,9 @@ router.get('/', (req, res) => {
 
 ///新增紀錄
 router.post('/', (req, res) => {
+  const userId = req.user._id
   const { name, date, category, amount } = req.body
-  return Record.create({ name, date, category, amount })
+  return Record.create({ name, date, category, amount, userId })
     .then(() => res.redirect('/'))
     .catch(error => console.log(error))
 })
