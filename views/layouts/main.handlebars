@@ -17,7 +17,18 @@
 
   <nav class="navbar sticky-top navbar-light" style="background-color: rgb(234, 234, 234);">
     <div class="container-fluid">
-      <a class="navbar-brand" href="/">家庭記帳本</a>
+      <a class="navbar-brand" href="/">{{#if isAuthenticated}}{{user.name}}的{{/if}}家庭記帳本</a>
+      {{#if isAuthenticated}}
+      <form action="/restaurants/new" method="POST" class="d-flex justify-content-end mt-2">
+        <a href="/users/logout" class="btn btn-outline-secondary ms-2"
+          style="color: rgba(224, 110, 34, 0.848); background:white">登出</a>
+      </form>
+      {{else}}
+      <form action="/restaurants/new" method="POST" class="d-flex justify-content-end mt-2">
+        <a href="/users/login" class="btn btn-outline-secondary ms-2"
+          style="color: rgba(224, 110, 34, 0.848); background:white">登入</a>
+      </form>
+      {{/if}}
     </div>
   </nav>
   <div class="container justify-content-center" style="max-width: 600px;">
