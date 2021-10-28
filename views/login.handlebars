@@ -1,0 +1,20 @@
+<div class="col-8 my-4 m-auto">
+  <form action="/users/login" method="POST">
+    <h1 class="text-center mb-5">登入</h1>
+    {{!-- {{> message}} --}}
+    <div class="mb-3">
+      {{!-- <label for="email" class="form-label">E-mail</label> --}}
+      <input type="email" class="form-control" id="email" aria-describedby="emailHelp" name="email" placeholder="Email"
+        required>
+    </div>
+    <div class="mb-3">
+      {{!-- <label for="password" class="form-label">密碼</label> --}}
+      <input type="password" class="form-control" id="password" name="password" placeholder="密碼" required>
+    </div>
+    <button type="submit" class="btn btn-outline-danger col-5 mt-4" id="submit">登入 </button>
+  </form>
+  <p class="lead mt-4">
+    沒有帳號嗎?
+    <a href="/users/register">註冊</a>
+  </p>
+</div>

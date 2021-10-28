@@ -22,7 +22,7 @@ li:nth-child(odd) .record-penal {
   background:rgb(234, 234, 234); 
 }
 
-#create{
+#create, #submit{
   background-color: rgba(224, 110, 34, 0.848);
   color: white;
   border-color: black;
