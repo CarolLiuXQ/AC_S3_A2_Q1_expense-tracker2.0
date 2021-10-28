@@ -5,20 +5,24 @@ const Record = require('../../models/record')
 const Category = require('../../models/category')
 
 router.get('/', (req, res) => {
+  //同時在DB中搜尋records和categories這兩張表
   Promise.all([Record.find().lean(), Category.find().lean()])
     .then(results => {
       const records = results[0]
       const category = results[1]
-      let filteredCategory = req.query.category
+      const filteredCategory = req.query.category
       let totalAmount = 0
 
-      //篩選類別
-      let filteredRecords = records.filter(record =>
-        record.category === filteredCategory
-      )
-      //因為首頁的filteredCategory是undefined所以要做區分
-      filteredCategory === undefined ? filteredRecords = records : filteredRecords = filteredRecords
+      //篩選類別的records
+      let filteredRecords = records.filter(record => {
+        //因為當是首頁時,他的filteredCategory是undefined,以及篩選如果是"類別"的話,filteredCategory是category要是全選
+        if (filteredCategory === 'category' || filteredCategory === undefined) {
+          return record
+        }
+        return record.category === filteredCategory
+      })
 
+      //把篩選過後的每一筆資料的類別icon串上iconHTML,以及計算總計金額
       filteredRecords.forEach(record => {
         const categoryFound = category.find(category =>
           category.categoryEN === record.category

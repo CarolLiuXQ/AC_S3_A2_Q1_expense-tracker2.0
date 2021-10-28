@@ -2,7 +2,7 @@
   {{!-- 類別 --}}
   <form action="/" method="GET" class="col-8 my-4">
     <select class="form-select" id="category" name="category" onchange="submit()">
-      <option value="" disabled selected hidden>類別</option>
+      <option value="category">類別</option>
       <option value="home" {{#isEqual "home" filteredCategory}}selected{{/isEqual}}>家居物業</option>
       <option value="transport" {{#isEqual "transport" filteredCategory}}selected{{/isEqual}}>交通出行</option>
       <option value="entertainment" {{#isEqual "entertainment" filteredCategory}}selected{{/isEqual}}>休閒娛樂
