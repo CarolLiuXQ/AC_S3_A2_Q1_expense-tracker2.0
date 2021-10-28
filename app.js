@@ -4,6 +4,7 @@ const methodOverride = require('method-override')
 const exphbs = require('express-handlebars')
 const routes = require('./routes/index')
 const session = require('express-session')
+const usePassport = require('./config/passport')
 
 const app = express()
 const PORT = process.env.PORT || 3000
@@ -25,6 +26,9 @@ app.use(session({
 
 app.use(express.urlencoded({ extended: true }))
 app.use(methodOverride('_method'))
+
+usePassport(app)
+
 app.use(routes)
 
 
