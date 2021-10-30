@@ -7,8 +7,12 @@ const session = require('express-session')
 const usePassport = require('./config/passport')
 const flash = require('connect-flash')
 
+if (process.env.NODE_ENV !== 'production') {
+  require('dotenv').config()
+}
+
 const app = express()
-const PORT = process.env.PORT || 3000
+const PORT = process.env.PORT
 
 require('./config/mongoose')
 
@@ -20,7 +24,7 @@ app.engine('handlebars', exphbs({
 app.set('view engine', 'handlebars')
 
 app.use(session({
-  secret: 'ThisIsMySecret',
+  secret: process.env.SESSION_SECRET,
   resave: false,
   saveUninitialized: true
 }))
