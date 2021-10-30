@@ -1,22 +1,27 @@
-{
-  "home": {
+[
+  {
+    "categoryId": "home",
     "categoryCH": "家居物業",
     "iconHTML": "fas fa-home fa-3x"
   },
-  "transport": {
+  {
+    "categoryId": "transport",
     "categoryCH": "交通出行",
     "iconHTML": "fas fa-shuttle-van fa-3x"
   },
-  "entertainment": {
+  {
+    "categoryId": "entertainment",
     "categoryCH": "休閒娛樂",
     "iconHTML": "fas fa-grin-beam fa-3x"
   },
-  "food": {
+  {
+    "categoryId": "food",
     "categoryCH": "餐飲食品",
     "iconHTML": "fas fa-utensils fa-3x"
   },
-  "others": {
+  {
+    "categoryId": "others",
     "categoryCH": "其他",
     "iconHTML": "fas fa-pen fa-3x"
   }
-}
+]

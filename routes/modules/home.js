@@ -26,7 +26,7 @@ router.get('/', (req, res) => {
       //把篩選過後的每一筆資料的類別icon串上iconHTML,以及計算總計金額
       filteredRecords.forEach(record => {
         const categoryFound = category.find(category =>
-          category.categoryEN === record.category
+          category.categoryId === record.category
         )
         record.category = categoryFound.iconHTML
         totalAmount += Number(record.amount)

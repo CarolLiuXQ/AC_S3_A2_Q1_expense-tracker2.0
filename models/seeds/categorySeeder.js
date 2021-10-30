@@ -1,15 +1,13 @@
 const db = require('../../config/mongoose')
 const Category = require('../category')
-const category = require('../../config/category.json')
+const categoryJson = require('../../config/category.json')
 
 
 db.once('open', () => {
-  for (let key in category) {
-    Category.create({
-      categoryEN: key,
-      categoryCH: category[key].categoryCH,
-      iconHTML: category[key].iconHTML
-    })
-  }
-  console.log('done!')
+  categoryJson.forEach(category => Category.create({
+    categoryId: category.categoryId,
+    categoryCH: category.categoryCH,
+    iconHTML: category.iconHTML
+  }))
+  console.log('Category done!')
 })
